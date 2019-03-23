@@ -9,7 +9,7 @@ class FluttterApp extends StatelessWidget {
     return MaterialApp(
       title: 'Fluttter',
       home: HomePage(),
-    );git
+    );
   }
 }
 
