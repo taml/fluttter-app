@@ -60,6 +60,13 @@ flutter:
     - family: Pacifico
       fonts:
         - asset: fonts/Pacifico-Regular.ttf
+    - family: GothicA1
+      fonts:
+        - asset: fonts/GothicA1-Regular.ttf
+        - asset: fonts/GothicA1-Light.ttf
+          weight: 300
+        - asset: fonts/GothicA1-SemiBold.ttf
+          weight: 600
 
   # For details regarding fonts from package dependencies,
   # see https://flutter.io/custom-fonts/#from-packages
