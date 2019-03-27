@@ -50,7 +50,14 @@ flutter:
     - assets/6.jpg
     - assets/7.jpg
     - assets/8.jpg
-    - assets/dog1.png
+    - assets/profile/dog1.png
+    - assets/profile/dog2.png
+    - assets/profile/dog3.png
+    - assets/profile/dog4.png
+    - assets/profile/dog5.png
+    - assets/profile/dog6.png
+    - assets/profile/dog7.png
+    - assets/profile/dog8.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.

@@ -96,7 +96,6 @@ class HomePage extends StatelessWidget {
 }
 
 class BodyContent extends StatelessWidget {
-
   Widget _buildPostHeader() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
@@ -108,7 +107,7 @@ class BodyContent extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: CircleAvatar(
-                backgroundImage: AssetImage('assets/dog1.png'),
+                backgroundImage: AssetImage('assets/profile/dog1.png'),
                 radius: 22.0,
               ),
             ),
@@ -158,7 +157,8 @@ class BodyContent extends StatelessWidget {
                   Column(
                     children: <Widget>[
                       Container(
-                        padding: const EdgeInsets.fromLTRB(0.0, 0.0, 16.0, 16.0),
+                        padding:
+                            const EdgeInsets.fromLTRB(0.0, 0.0, 16.0, 16.0),
                         child: Text(
                           '3 days ago',
                           textAlign: TextAlign.start,
