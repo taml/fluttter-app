@@ -20,6 +20,6 @@ class Post {
   final String title;
   final String author;
   final String authorImg;
-  final int date;
+  final String date;
   final String postImg;
 }

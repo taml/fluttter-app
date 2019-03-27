@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'models/post.dart';
+import 'utils/fluttter_data.dart';
+
 const fluttterDarkGrey = Color(0xFF383838);
 const fluttterLightGrey = Color(0xFFB1B1B1);
 const fluttterPink = Color(0xFFEA4C89);
@@ -96,7 +99,13 @@ class HomePage extends StatelessWidget {
 }
 
 class BodyContent extends StatelessWidget {
-  Widget _buildPostHeader() {
+  Widget _buildPostHeader(Post post) {
+
+    final String _title = post.title;
+    final String _author = post.author;
+    final String _authorImg = post.authorImg;
+    final String _date = post.date;
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -107,7 +116,7 @@ class BodyContent extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: CircleAvatar(
-                backgroundImage: AssetImage('assets/profile/dog1.png'),
+                backgroundImage: AssetImage(_authorImg),
                 radius: 22.0,
               ),
             ),
@@ -123,7 +132,7 @@ class BodyContent extends StatelessWidget {
                   Container(
                     padding: const EdgeInsets.fromLTRB(4.0, 18.0, 16.0, 0.0),
                     child: Text(
-                      'Love is Color',
+                      _title,
                       textAlign: TextAlign.start,
                       style: TextStyle(
                         fontFamily: fluttterMainFont,
@@ -142,7 +151,7 @@ class BodyContent extends StatelessWidget {
                       Container(
                         padding: const EdgeInsets.fromLTRB(4.0, 0.0, 2.0, 16.0),
                         child: Text(
-                          'Fluffy McScruffins,',
+                          _author,
                           textAlign: TextAlign.start,
                           style: TextStyle(
                             fontFamily: fluttterMainFont,
@@ -160,7 +169,7 @@ class BodyContent extends StatelessWidget {
                         padding:
                             const EdgeInsets.fromLTRB(0.0, 0.0, 16.0, 16.0),
                         child: Text(
-                          '3 days ago',
+                          ', ' + _date,
                           textAlign: TextAlign.start,
                           style: TextStyle(
                             fontFamily: fluttterMainFont,
@@ -181,12 +190,15 @@ class BodyContent extends StatelessWidget {
     );
   }
 
-  Widget _buildPostBody(BuildContext context) {
+  Widget _buildPostBody(BuildContext context, Post post) {
+
+    final String _postImg = post.postImg;
+
     return Row(
       children: <Widget>[
         Row(
           children: <Widget>[
-            Image.asset('assets/1.jpg',
+            Image.asset(_postImg,
                 width: MediaQuery.of(context).size.width, fit: BoxFit.cover),
           ],
         ),
@@ -194,7 +206,14 @@ class BodyContent extends StatelessWidget {
     );
   }
 
-  Widget _buildPostFooter() {
+  Widget _buildPostFooter(Post post) {
+
+    int _likes = post.likes;
+    int _comments = post.comments;
+    int _views = post.views;
+    int _refluttts = post.refluttts;
+    int _attachments = post.attachments;
+
     return Container(
       padding: EdgeInsets.all(16.0),
       child: Row(
@@ -209,9 +228,9 @@ class BodyContent extends StatelessWidget {
                       color: Colors.grey,
                     ),
                     Padding(
-                      padding: EdgeInsets.fromLTRB(8.0, 2.0, 8.0, 0.0),
+                      padding: EdgeInsets.fromLTRB(8.0, 2.0, 24.0, 0.0),
                       child: Text(
-                        '30',
+                        _likes.toString(),
                         style: TextStyle(
                           color: Colors.grey[700],
                           fontFamily: fluttterMainFont,
@@ -225,9 +244,9 @@ class BodyContent extends StatelessWidget {
                       color: Colors.grey,
                     ),
                     Padding(
-                      padding: EdgeInsets.fromLTRB(8.0, 2.0, 8.0, 0.0),
+                      padding: EdgeInsets.fromLTRB(8.0, 2.0, 24.0, 0.0),
                       child: Text(
-                        '0',
+                        _comments.toString(),
                         style: TextStyle(
                           color: Colors.grey[700],
                           fontFamily: fluttterMainFont,
@@ -241,9 +260,9 @@ class BodyContent extends StatelessWidget {
                       color: Colors.grey,
                     ),
                     Padding(
-                      padding: EdgeInsets.fromLTRB(8.0, 2.0, 8.0, 0.0),
+                      padding: EdgeInsets.fromLTRB(8.0, 2.0, 24.0, 0.0),
                       child: Text(
-                        '177',
+                        _views.toString(),
                         style: TextStyle(
                           color: Colors.grey[700],
                           fontFamily: fluttterMainFont,
@@ -266,9 +285,9 @@ class BodyContent extends StatelessWidget {
                     color: Colors.grey,
                   ),
                   Padding(
-                    padding: EdgeInsets.fromLTRB(8.0, 2.0, 8.0, 0.0),
+                    padding: EdgeInsets.fromLTRB(8.0, 2.0, 24.0, 0.0),
                     child: Text(
-                      '1',
+                      _refluttts.toString(),
                       style: TextStyle(
                         color: Colors.grey[700],
                         fontFamily: fluttterMainFont,
@@ -284,7 +303,7 @@ class BodyContent extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.fromLTRB(8.0, 2.0, 8.0, 0.0),
                     child: Text(
-                      '3',
+                      _attachments.toString(),
                       style: TextStyle(
                         color: Colors.grey[700],
                         fontFamily: fluttterMainFont,
@@ -302,18 +321,19 @@ class BodyContent extends StatelessWidget {
     );
   }
 
-  Widget _buildPostCard(BuildContext context) {
+  Widget _buildPostCard(BuildContext context, Post post) {
+
     return Card(
       color: Colors.white,
-      margin: EdgeInsets.symmetric(horizontal: 0.0),
+      margin: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 16.0),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.all(Radius.circular(0.0)),
       ),
       child: Column(
         children: <Widget>[
-          _buildPostHeader(),
-          _buildPostBody(context),
-          _buildPostFooter(),
+          _buildPostHeader(post),
+          _buildPostBody(context, post),
+          _buildPostFooter(post),
         ],
       ),
     );
@@ -321,15 +341,23 @@ class BodyContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<Card> testList = [_buildPostCard(context)];
+    final List<Post> popularPosts = FluttterData().getPopularData();
+
+    Widget getData(List<Post> posts, int index) {
+      List<Card> postCards = [];
+      posts.forEach((value){
+        postCards.add(_buildPostCard(context, value));
+      });
+      return postCards[index];
+    }
 
     return TabBarView(
       children: <Widget>[
+        Text('1'),
         ListView.builder(
-          itemCount: 1,
-          itemBuilder: (BuildContext context, int index) => testList[index],
+          itemCount: popularPosts.length,
+          itemBuilder: (BuildContext context, int index) => getData(popularPosts, index),
         ),
-        Text('2'),
         Text('3'),
       ],
     );
