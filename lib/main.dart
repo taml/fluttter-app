@@ -197,7 +197,7 @@ class BodyContent extends StatelessWidget {
         Row(
           children: <Widget>[
             Image.asset(_postImg,
-                width: MediaQuery.of(context).size.width, fit: BoxFit.cover),
+                width: MediaQuery.of(context).size.width, height: (MediaQuery.of(context).size.width / 5) * 3.5, fit: BoxFit.cover),
           ],
         ),
       ],
@@ -353,6 +353,7 @@ class BodyContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final List<Post> followingPosts = FluttterData().getFollowingData();
     final List<Post> popularPosts = FluttterData().getPopularData();
 
     Widget getData(List<Post> posts, int index) {
@@ -365,7 +366,11 @@ class BodyContent extends StatelessWidget {
 
     return TabBarView(
       children: <Widget>[
-        Text('1'),
+        ListView.builder(
+          itemCount: followingPosts.length,
+          itemBuilder: (BuildContext context, int index) =>
+              getData(followingPosts, index),
+        ),
         ListView.builder(
           itemCount: popularPosts.length,
           itemBuilder: (BuildContext context, int index) =>

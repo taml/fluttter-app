@@ -2,6 +2,13 @@ import '../models/post.dart';
 
 class FluttterData {
 
+  List<Post> getFollowingData() {
+    Post post1 = Post('Krypton Storm', 'Bark Kent', 'assets/profile/dog2.png', '3 days ago', 'assets/8.jpg', 118, 5, 3905, 1);
+    Post post2 = Post('Gotham Nightlife', 'Kate Kanine', 'assets/profile/dog9.png', '3 days ago', 'assets/5.jpg');
+    Post post3 = Post('Alfred', 'Bruce Mayne', 'assets/profile/dog5.png', '5 days ago', 'assets/6.jpg', 97, 4, 2597, 1);
+    return [post1, post2, post3];
+  }
+
   List<Post> getPopularData() {
     Post post1 = Post('Love is Color', 'Fluffy McScruffins', 'assets/profile/dog1.png', '212 days ago', 'assets/1.jpg', 334, 8, 2057, 3);
     Post post2 = Post('Urban Bear', 'Pugsworth', 'assets/profile/dog6.png', '160 days ago', 'assets/7.jpg', 297, 5, 1893, 0, 1);
