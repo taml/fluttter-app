@@ -100,7 +100,6 @@ class HomePage extends StatelessWidget {
 
 class BodyContent extends StatelessWidget {
   Widget _buildPostHeader(Post post) {
-
     final String _title = post.title;
     final String _author = post.author;
     final String _authorImg = post.authorImg;
@@ -191,7 +190,6 @@ class BodyContent extends StatelessWidget {
   }
 
   Widget _buildPostBody(BuildContext context, Post post) {
-
     final String _postImg = post.postImg;
 
     return Row(
@@ -207,7 +205,6 @@ class BodyContent extends StatelessWidget {
   }
 
   Widget _buildPostFooter(Post post) {
-
     int _likes = post.likes;
     int _comments = post.comments;
     int _views = post.views;
@@ -280,35 +277,47 @@ class BodyContent extends StatelessWidget {
             children: <Widget>[
               Row(
                 children: <Widget>[
-                  Icon(
-                    Icons.reply,
-                    color: Colors.grey,
+                  Visibility(
+                    visible: isNotEqualToZero(_refluttts),
+                    child: Icon(
+                      Icons.reply,
+                      color: Colors.grey,
+                    ),
                   ),
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(8.0, 2.0, 24.0, 0.0),
-                    child: Text(
-                      _refluttts.toString(),
-                      style: TextStyle(
-                        color: Colors.grey[700],
-                        fontFamily: fluttterMainFont,
-                        fontWeight: FontWeight.w700,
-                        fontSize: 16.0,
+                  Visibility(
+                    visible: isNotEqualToZero(_refluttts),
+                    child: Padding(
+                      padding: EdgeInsets.fromLTRB(8.0, 2.0, smallerPadding(isNotEqualToZero(_refluttts)), 0.0),
+                      child: Text(
+                        _refluttts.toString(),
+                        style: TextStyle(
+                          color: Colors.grey[700],
+                          fontFamily: fluttterMainFont,
+                          fontWeight: FontWeight.w700,
+                          fontSize: 16.0,
+                        ),
                       ),
                     ),
                   ),
-                  Icon(
-                    Icons.attach_file,
-                    color: Colors.grey,
+                  Visibility(
+                    visible: isNotEqualToZero(_attachments),
+                    child: Icon(
+                      Icons.attach_file,
+                      color: Colors.grey,
+                    ),
                   ),
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(8.0, 2.0, 8.0, 0.0),
-                    child: Text(
-                      _attachments.toString(),
-                      style: TextStyle(
-                        color: Colors.grey[700],
-                        fontFamily: fluttterMainFont,
-                        fontWeight: FontWeight.w700,
-                        fontSize: 16.0,
+                  Visibility(
+                    visible: isNotEqualToZero(_attachments),
+                    child: Padding(
+                      padding: EdgeInsets.fromLTRB(8.0, 2.0, 8.0, 0.0),
+                      child: Text(
+                        _attachments.toString(),
+                        style: TextStyle(
+                          color: Colors.grey[700],
+                          fontFamily: fluttterMainFont,
+                          fontWeight: FontWeight.w700,
+                          fontSize: 16.0,
+                        ),
                       ),
                     ),
                   ),
@@ -321,8 +330,11 @@ class BodyContent extends StatelessWidget {
     );
   }
 
-  Widget _buildPostCard(BuildContext context, Post post) {
+  bool isNotEqualToZero(int value) => value != 0 ? true : false;
+  
+  double smallerPadding(bool elementInvisible) => elementInvisible == true ? 8.0 : 24.0; 
 
+  Widget _buildPostCard(BuildContext context, Post post) {
     return Card(
       color: Colors.white,
       margin: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 16.0),
@@ -345,7 +357,7 @@ class BodyContent extends StatelessWidget {
 
     Widget getData(List<Post> posts, int index) {
       List<Card> postCards = [];
-      posts.forEach((value){
+      posts.forEach((value) {
         postCards.add(_buildPostCard(context, value));
       });
       return postCards[index];
@@ -356,7 +368,8 @@ class BodyContent extends StatelessWidget {
         Text('1'),
         ListView.builder(
           itemCount: popularPosts.length,
-          itemBuilder: (BuildContext context, int index) => getData(popularPosts, index),
+          itemBuilder: (BuildContext context, int index) =>
+              getData(popularPosts, index),
         ),
         Text('3'),
       ],
