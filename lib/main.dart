@@ -197,7 +197,9 @@ class BodyContent extends StatelessWidget {
         Row(
           children: <Widget>[
             Image.asset(_postImg,
-                width: MediaQuery.of(context).size.width, height: (MediaQuery.of(context).size.width / 5) * 3.5, fit: BoxFit.cover),
+                width: MediaQuery.of(context).size.width,
+                height: (MediaQuery.of(context).size.width / 5) * 3.5,
+                fit: BoxFit.cover),
           ],
         ),
       ],
@@ -287,7 +289,8 @@ class BodyContent extends StatelessWidget {
                   Visibility(
                     visible: isNotEqualToZero(_refluttts),
                     child: Padding(
-                      padding: EdgeInsets.fromLTRB(8.0, 2.0, smallerPadding(isNotEqualToZero(_refluttts)), 0.0),
+                      padding: EdgeInsets.fromLTRB(8.0, 2.0,
+                          smallerPadding(isNotEqualToZero(_refluttts)), 0.0),
                       child: Text(
                         _refluttts.toString(),
                         style: TextStyle(
@@ -331,8 +334,9 @@ class BodyContent extends StatelessWidget {
   }
 
   bool isNotEqualToZero(int value) => value != 0 ? true : false;
-  
-  double smallerPadding(bool elementInvisible) => elementInvisible == true ? 8.0 : 24.0; 
+
+  double smallerPadding(bool elementInvisible) =>
+      elementInvisible == true ? 8.0 : 24.0;
 
   Widget _buildPostCard(BuildContext context, Post post) {
     return Card(
@@ -355,6 +359,7 @@ class BodyContent extends StatelessWidget {
   Widget build(BuildContext context) {
     final List<Post> followingPosts = FluttterData().getFollowingData();
     final List<Post> popularPosts = FluttterData().getPopularData();
+    final List<Post> recentPosts = FluttterData().getRecentData();
 
     Widget getData(List<Post> posts, int index) {
       List<Card> postCards = [];
@@ -376,7 +381,11 @@ class BodyContent extends StatelessWidget {
           itemBuilder: (BuildContext context, int index) =>
               getData(popularPosts, index),
         ),
-        Text('3'),
+        ListView.builder(
+          itemCount: recentPosts.length,
+          itemBuilder: (BuildContext context, int index) =>
+              getData(recentPosts, index),
+        ),
       ],
     );
   }
