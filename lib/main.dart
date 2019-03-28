@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 
+import 'colors.dart';
 import 'models/post.dart';
 import 'utils/fluttter_data.dart';
 
-const fluttterDarkGrey = Color(0xFF383838);
-const fluttterLightGrey = Color(0xFFB1B1B1);
-const fluttterPink = Color(0xFFEA4C89);
-const fluttterBlue = Color(0xFF538CB8);
 const fluttterMainFont = 'GothicA1';
 
 void main() => runApp(FluttterApp());
