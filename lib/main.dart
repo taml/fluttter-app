@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
+import 'activity.dart';
 import 'colors.dart';
+import 'fontfams.dart';
 import 'models/post.dart';
 import 'utils/fluttter_data.dart';
-
-const fluttterMainFont = 'GothicA1';
 
 void main() => runApp(FluttterApp());
 
@@ -13,12 +13,12 @@ class FluttterApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Fluttter',
-      home: HomePage(),
+      home: HomeRoute(),
     );
   }
 }
 
-class HomePage extends StatelessWidget {
+class HomeRoute extends StatelessWidget {
   Widget _buildTabs() {
     return TabBar(
       indicatorColor: fluttterPink,
@@ -64,7 +64,7 @@ class HomePage extends StatelessWidget {
           title: Text(
             'fluttter',
             style: TextStyle(
-              fontFamily: 'Pacifico',
+              fontFamily: fluttterBrandFont,
               fontSize: 26.0,
             ),
           ),
@@ -75,7 +75,12 @@ class HomePage extends StatelessWidget {
                 color: Colors.grey[300],
                 semanticLabel: 'activity',
               ),
-              onPressed: null,
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ActivityRoute()),
+                );
+              },
             ),
             IconButton(
               icon: Icon(
@@ -88,7 +93,7 @@ class HomePage extends StatelessWidget {
           ],
           bottom: _buildTabs(),
         ),
-        backgroundColor: Color(0xFFF2F2F2),
+        backgroundColor: fluttterLightGrey,
         body: BodyContent(),
       ),
     );
@@ -142,40 +147,31 @@ class BodyContent extends StatelessWidget {
               ),
               Row(
                 children: <Widget>[
-                  Column(
-                    children: <Widget>[
-                      Container(
-                        padding: const EdgeInsets.fromLTRB(4.0, 0.0, 2.0, 16.0),
-                        child: Text(
-                          _author,
-                          textAlign: TextAlign.start,
-                          style: TextStyle(
-                            fontFamily: fluttterMainFont,
-                            fontWeight: FontWeight.w700,
-                            color: fluttterBlue,
-                            fontSize: 15.0,
-                          ),
-                        ),
+                  Container(
+                    padding: const EdgeInsets.fromLTRB(4.0, 0.0, 2.0, 16.0),
+                    child: Text(
+                      _author,
+                      textAlign: TextAlign.start,
+                      style: TextStyle(
+                        fontFamily: fluttterMainFont,
+                        fontWeight: FontWeight.w700,
+                        color: fluttterBlue,
+                        fontSize: 15.0,
                       ),
-                    ],
+                    ),
                   ),
-                  Column(
-                    children: <Widget>[
-                      Container(
-                        padding:
-                            const EdgeInsets.fromLTRB(0.0, 0.0, 16.0, 16.0),
-                        child: Text(
-                          ', ' + _date,
-                          textAlign: TextAlign.start,
-                          style: TextStyle(
-                            fontFamily: fluttterMainFont,
-                            fontWeight: FontWeight.w600,
-                            color: fluttterLightGrey,
-                            fontSize: 15.0,
-                          ),
-                        ),
+                  Container(
+                    padding: const EdgeInsets.fromLTRB(0.0, 0.0, 16.0, 16.0),
+                    child: Text(
+                      ', ' + _date,
+                      textAlign: TextAlign.start,
+                      style: TextStyle(
+                        fontFamily: fluttterMainFont,
+                        fontWeight: FontWeight.w600,
+                        color: fluttterMidGrey,
+                        fontSize: 15.0,
                       ),
-                    ],
+                    ),
                   ),
                 ],
               ),

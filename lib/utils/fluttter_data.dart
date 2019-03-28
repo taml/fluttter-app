@@ -1,3 +1,4 @@
+import '../models/activity_post.dart';
 import '../models/post.dart';
 
 class FluttterData {
@@ -21,6 +22,12 @@ class FluttterData {
     Post post2 = Post('Red Garden', 'Tiny', 'assets/profile/dog4.png', '4 hours ago', 'assets/4.jpg');
     Post post3 = Post('Krypton Storm', 'Bark Kent', 'assets/profile/dog2.png', '1 day ago', 'assets/8.jpg', 118, 5, 3905, 1);
     return [post1, post2, post3];
+  }
+
+  List<ActivityPost> getActivityData() {
+    ActivityPost activityPost1 = ActivityPost('assets/profile/dog7.png', 'Kate Kanine', 'followed you.', '4 Mar 2019');
+    ActivityPost activityPost2 = ActivityPost('assets/profile/dog6.png', 'Pugsworth', 'followed you.', '27 Feb 2019');
+    return [activityPost1, activityPost2];
   }
 
 }
