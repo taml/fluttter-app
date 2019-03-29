@@ -44,6 +44,176 @@ class HomeRoute extends StatelessWidget {
     );
   }
 
+  Widget _buildDrawer(BuildContext context) {
+    return Drawer(
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 16.0),
+        decoration: BoxDecoration(
+          color: fluttterDarkGrey,
+        ),
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            DrawerHeader(
+              decoration: BoxDecoration(
+                border: Border(
+                  bottom: BorderSide(
+                    color: Colors.grey[600],
+                  ),
+                ),
+              ),
+              child: Column(),
+              margin: EdgeInsets.zero,
+            ),
+            Container(
+              decoration: BoxDecoration(
+                border: Border(
+                  bottom: BorderSide(
+                    color: Colors.grey[600],
+                  ),
+                ),
+              ),
+              child: Column(
+                children: <Widget>[
+                  ListTile(
+                    leading: Icon(
+                      Icons.home,
+                      color: fluttterPink,
+                    ),
+                    title: Text(
+                      'Home',
+                      style: TextStyle(
+                        color: fluttterPink,
+                        fontSize: 16.0,
+                        fontFamily: fluttterMainFont,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                  ),
+                  ListTile(
+                    leading: Icon(
+                      Icons.explore,
+                      color: fluttterMidGrey,
+                    ),
+                    title: Text(
+                      'Explore',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16.0,
+                        fontFamily: fluttterMainFont,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
+                  ListTile(
+                    leading: Icon(
+                      Icons.show_chart,
+                      color: fluttterMidGrey,
+                    ),
+                    title: Text(
+                      'Activity',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16.0,
+                        fontFamily: fluttterMainFont,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    onTap: () {
+                      Navigator.pop(context);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => ActivityRoute()),
+                      );
+                    },
+                  ),
+                  ListTile(
+                    leading: Icon(
+                      Icons.email,
+                      color: fluttterMidGrey,
+                    ),
+                    title: Text(
+                      'Messages',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16.0,
+                        fontFamily: fluttterMainFont,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              decoration: BoxDecoration(
+                border: Border(
+                  bottom: BorderSide(
+                    color: Colors.grey[600],
+                  ),
+                ),
+              ),
+              child: ListTile(
+                leading: Icon(
+                  Icons.cloud_upload,
+                  color: fluttterMidGrey,
+                ),
+                title: Text(
+                  'Upload a Pic',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 16.0,
+                    fontFamily: fluttterMainFont,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ),
+            ),
+            Container(
+              child: Column(
+                children: <Widget>[
+                  ListTile(
+                    leading: Icon(
+                      Icons.settings,
+                      color: fluttterMidGrey,
+                    ),
+                    title: Text(
+                      'Settings',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16.0,
+                        fontFamily: fluttterMainFont,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
+                  ListTile(
+                    leading: Icon(
+                      Icons.info,
+                      color: fluttterMidGrey,
+                    ),
+                    title: Text(
+                      'Report a Bug',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16.0,
+                        fontFamily: fluttterMainFont,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -53,14 +223,10 @@ class HomeRoute extends StatelessWidget {
           centerTitle: true,
           backgroundColor: fluttterDarkGrey,
           brightness: Brightness.dark,
-          elevation: 0.0,
-          leading: IconButton(
-            icon: Icon(
-              Icons.menu,
-              color: Colors.grey[300],
-            ),
-            onPressed: null,
+          iconTheme: IconThemeData(
+            color: Colors.grey[300],
           ),
+          elevation: 0.0,
           title: Text(
             'fluttter',
             style: TextStyle(
@@ -95,6 +261,7 @@ class HomeRoute extends StatelessWidget {
         ),
         backgroundColor: fluttterLightGrey,
         body: BodyContent(),
+        drawer: _buildDrawer(context),
       ),
     );
   }
