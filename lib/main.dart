@@ -54,16 +54,87 @@ class HomeRoute extends StatelessWidget {
         child: ListView(
           padding: EdgeInsets.zero,
           children: <Widget>[
-            DrawerHeader(
-              decoration: BoxDecoration(
-                border: Border(
-                  bottom: BorderSide(
-                    color: Colors.grey[600],
+            Container(
+              height: 250.0,
+              child: DrawerHeader(
+                decoration: BoxDecoration(
+                  border: Border(
+                    bottom: BorderSide(
+                      color: Colors.grey[600],
+                    ),
                   ),
                 ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Container(
+                      padding: EdgeInsets.symmetric(vertical: 16.0),
+                      child: CircleAvatar(
+                        backgroundImage: AssetImage('assets/profile/dog3.png'),
+                        radius: 35.0,
+                      ),
+                    ),
+                    Container(
+                      padding: EdgeInsets.fromLTRB(0.0, 16.0, 4.0, 0.0),
+                      child: Text(
+                        'Majestic Floof',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 22.0,
+                          fontFamily: fluttterMainFont,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: Row(
+                        children: <Widget>[
+                          Text(
+                            '21',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontFamily: fluttterMainFont,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                          Container(
+                            padding: EdgeInsets.fromLTRB(2.0, 0.0, 48.0, 0.0),
+                            child: Text(
+                              'followers',
+                              style: TextStyle(
+                                color: fluttterMidGrey,
+                                fontFamily: fluttterMainFont,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          ),
+                          Text(
+                            '45',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontFamily: fluttterMainFont,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                          Container(
+                            padding: EdgeInsets.fromLTRB(2.0, 0.0, 16.0, 0.0),
+                            child: Text(
+                              'following',
+                              style: TextStyle(
+                                color: fluttterMidGrey,
+                                fontFamily: fluttterMainFont,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+                margin: EdgeInsets.zero,
               ),
-              child: Column(),
-              margin: EdgeInsets.zero,
             ),
             Container(
               decoration: BoxDecoration(
@@ -126,7 +197,8 @@ class HomeRoute extends StatelessWidget {
                       Navigator.pop(context);
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => ActivityRoute()),
+                        MaterialPageRoute(
+                            builder: (context) => ActivityRoute()),
                       );
                     },
                   ),
