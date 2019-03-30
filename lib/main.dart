@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'activity.dart';
 import 'colors.dart';
-import 'drawer_content.dart';
+import 'ui/drawer_content.dart';
 import 'fontfams.dart';
 import 'models/post.dart';
 import 'utils/fluttter_data.dart';

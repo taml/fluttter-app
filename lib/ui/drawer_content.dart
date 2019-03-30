@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'activity.dart';
-import 'colors.dart';
-import 'fontfams.dart';
+import '../activity.dart';
+import '../colors.dart';
+import '../fontfams.dart';
 
 class DrawerContent extends StatelessWidget {
   Widget _buildDrawerItem(IconData icon, String text, Color color) {
